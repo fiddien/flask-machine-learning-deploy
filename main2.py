@@ -5,7 +5,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-recommender_dnn = joblib.load("iris_decision_tree.joblib")
+model = tf.keras.models.load_model('recommender_model')
 
 @app.route("/")
 def hello():
@@ -18,7 +18,8 @@ def predict():
     print("type: {}".format(type(request_json)))
 		input = request_json.get('data')
 		input = [np.array(x) for x in input]
-    prediction = recommender_dnn.predict(input)
+		model.summary()
+    prediction = model.predict(input)
     prediction_string = [str(d) for d in prediction]
     response_json = {
         "data" : request_json.get("data"),
