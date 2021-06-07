@@ -14,11 +14,9 @@ def hello():
 @app.route("/predict", methods=["POST"])
 def predict():
     request_json = request.json
-    print("data: {}".format(request_json))
-    print("type: {}".format(type(request_json)))
-		input = request_json.get('data')
-		input = [np.array(x) for x in input]
-		model.summary()
+    input = request_json.get('data')
+    input = [np.array(x) for x in input]
+    model.summary()
     prediction = model.predict(input)
     prediction_string = [str(d) for d in prediction]
     response_json = {
