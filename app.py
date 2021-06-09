@@ -2,6 +2,7 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
+import tensorflow as tf
 from flask import Flask, request
 
 app = Flask(_name_)
