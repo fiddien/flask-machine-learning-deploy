@@ -20,7 +20,7 @@ def predict():
     input = [np.array(x) for x in input]
     
     # predict rating
-    num_predict = 10 # banyaknya id buku yang mau diambil
+    num_predict = 6 # banyaknya id buku yang mau diambil
     prediction = model.predict(input)
     prediction = prediction.reshape(-1) 
     predicted_book_id = (-prediction).argsort()[0:num_predict]
