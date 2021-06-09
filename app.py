@@ -21,7 +21,7 @@ def predict():
     
     book_id = np.array([i+1 for i in range(10000)])
     user_id = np.array([7 for i in range(10000)])
-    input = [book_id, user_id]
+    input = (book_id, user_id)
     
     # predict rating
     num_predict = 6 # banyaknya id buku yang mau diambil
