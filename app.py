@@ -28,10 +28,10 @@ def predict():
     num_predict = 6 # banyaknya id buku yang mau diambil
     prediction = model.predict(input)
     prediction = prediction.reshape(-1) 
-    #predicted_book_id = (-prediction).argsort()[:num_predict]
-    predicted_book_id = [x+1 for x in range(num_predict)]
-    predicted_rating = prediction[:numpredict]
-    #predicted_rating = np.sort(prediction)[num_predict:][::-1]
+    predicted_book_id = (-prediction).argsort()[:num_predict]
+    #predicted_book_id = [x+1 for x in range(num_predict)]
+    #predicted_rating = prediction[:numpredict]
+    predicted_rating = np.sort(prediction)[num_predict:][::-1]
     titles = list(books.iloc[predicted_book_id].title)
     image_urls = list(books.iloc[predicted_book_id].small_image_url)
     
