@@ -7,9 +7,6 @@ from flask import Flask, request
 app = Flask(_name_)
 model = tf.keras.models.load_model('recommender_model')
 books = pd.read_csv('dataset/books.csv')
-book_id = [i+1 for i in range(10000)]
-user_id = [7 for i in range(10000)]
-X = [book_id, user_id]
 
 @app.route("/")
 def hello():
@@ -21,7 +18,12 @@ def predict():
     request_json = request.json
     input = request_json.get('data')
     input = [np.array(x) for x in input]
+    
+    book_id = [i+1 for i in range(10000)]
+    user_id = [7 for i in range(10000)]
+    X = [book_id, user_id]
     input = X
+    
     # predict rating
     num_predict = 6 # banyaknya id buku yang mau diambil
     prediction = model.predict(input)
