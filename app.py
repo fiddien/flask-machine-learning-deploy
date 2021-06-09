@@ -17,12 +17,8 @@ def hello():
 def predict():
 
     request_json = request.json
-    input = request_json.get('data')
-    input = [np.array(x) for x in input]
-    
-    book_id = np.array([i+1 for i in range(10000)])
-    user_id = np.array([7 for i in range(10000)])
-    input = (book_id, user_id)
+    book_id, user_id = request_json.get('data')
+    input = (np.array(book_id), np.array(user_id))
     
     # predict rating
     num_predict = 6 # banyaknya id buku yang mau diambil
