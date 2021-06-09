@@ -22,6 +22,7 @@ def predict():
     book_id = [i+1 for i in range(10000)]
     user_id = [7 for i in range(10000)]
     X = [book_id, user_id]
+    X = [np.array(x) for x in X]
     input = X
     
     # predict rating
